@@ -30,14 +30,21 @@ url = 'https://eartalk.org/otherProjects/positions/position_1.json'
 
 
 sendToOne = False
+sendToCustom = "sounds.pink"
+
 
 
 midiout = rtmidi.MidiOut()
 available_ports = midiout.get_ports()
 
+midiout.open_virtual_port(sendToCustom)
+
 # find all availiable output ports and open a connection to all of them
 print(available_ports)
+
 allPorts = []
+allPorts.append(midiout)
+
 if available_ports:
 	for i in range(len(available_ports)):
 		outputPort = rtmidi.MidiOut()
